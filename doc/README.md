@@ -4,7 +4,7 @@
 
 采用 TypeScript、面向对象及一类一文件。目标为作业规定的六种 SVG 元素、全部 CLI 命令和撤销重做；不实现后续阶段的 box 插件。
 
-运行：Node.js 22+，执行 `npm ci`、`npm run cli`。验证：`npm test`；示例：`npm run demo`。当前 Windows 工作区还提供 `scripts/cli.ps1`，临时调整进程 PATH，退出时恢复。
+运行：Node.js 22+，执行 `npm ci`、`npm run cli`。验证：`npm test`；示例：`npm run demo`。Windows 推荐 `scripts/run.cmd cli`（或 `test`、`demo`），在脚本局部设置本地 Node 的 PATH，不依赖 PowerShell 脚本执行策略；原 `scripts/cli.ps1` 仍保留为可选入口。
 
 | 模块 | 职责 | 允许依赖 |
 |---|---|---|
@@ -64,6 +64,10 @@ infrastructure --> domain
 - 示例验证：实际运行作业流程图命令，生成 8 个元素；使用隔离配置的 Edge 无界面模式渲染，检查了中文、两矩形与连线。PlantUML 工具查询未获批准，保留可编辑源文件并本地绘制对应包图。
 
 阶段历史可用 `git log --oneline --reverse` 核对；最终文档更新和验收标签在上述功能提交之后完成。
+
+### 用户运行反馈修正
+
+- 2026-10-23：用户在自己的 PowerShell 中运行 `scripts/cli.ps1`，遇到系统禁止执行脚本。代理环境的终端测试没有覆盖该执行策略差异。新增 `scripts/run.cmd` 统一支持启动、测试和示例，保持系统执行策略不变，并修正运行说明。本次修正在已有 `final` 标签之后提交到 `lab1`，保留已发布标签指向的原验收版本。
 
 ## 一致性自查
 

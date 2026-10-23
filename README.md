@@ -11,7 +11,13 @@ npm ci
 npm run cli
 ```
 
-在当前 Windows 工作区中也可直接运行 `powershell -File scripts/cli.ps1`，使用已准备好的 `.tools/` 本地 Node 环境。该环境不提交到仓库；克隆到其他电脑时请先安装 Node.js。
+在当前 Windows 工作区的 PowerShell 或 CMD 中，推荐执行：
+
+```powershell
+.\scripts\run.cmd cli
+```
+
+此入口自动使用已准备好的 `.tools/` 本地 Node 环境，不受 PowerShell `.ps1` 执行策略限制，也不修改系统策略或全局 PATH。该环境不提交到仓库；克隆到其他电脑时请先安装 Node.js 并执行 `npm ci`。
 
 ```text
 svg> init 800 600
@@ -31,6 +37,13 @@ svg> save demo.svg
 ```sh
 npm test
 npm run demo
+```
+
+Windows 也可使用无需手动设置 PATH 的入口：
+
+```powershell
+.\scripts\run.cmd test
+.\scripts\run.cmd demo
 ```
 
 `npm run demo` 以 UTF-8 回放 [示例命令](examples/flowchart.commands)，生成 [flowchart.svg](examples/flowchart.svg)。可直接用浏览器打开。
