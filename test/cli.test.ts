@@ -71,3 +71,30 @@ test('real CLI reads stdin, continues after error and exits on EOF', () => {
   assert.match(result.stdout, /text#t.*开始 & end/);
   assert.equal(result.stderr, '');
 });
+
+test('each structural edit restores exact tree, parent, style and sibling ordering', () => {
+  const edits = ['addto right a', 'group bundle b a', 'ungroup left', 'front a', 'back b',
+    'delete left', 'set left fill blue', 'set a width 12.5', 'move scene -3 1.25', 'scale scene 0.5'];
+  for (const edit of edits) {
+    const { run } = setup();
+    for (const line of ['init', 'create g scene', 'create g left in scene', 'create g right in scene',
+      'create rect a 1 2 3 4 red in left', 'create rect b 5 6 7 8 green in left',
+      'create text t 0 0 "hello" in right']) assert.doesNotMatch(run(line), /^error:/);
+    const before = run('tree');
+    assert.doesNotMatch(run(edit), /^error:/, edit);
+    const after = run('tree');
+    run('undo'); assert.equal(run('tree'), before, `undo ${edit}`);
+    run('redo'); assert.equal(run('tree'), after, `redo ${edit}`);
+  }
+});
+
+test('cross-parent group uses common ancestor and original document order', () => {
+  const { run, session } = setup();
+  for (const line of ['init', 'create g scene', 'create g left in scene', 'create g right in scene',
+    'create circle a 1 2 3 in left', 'create circle b 4 5 6 in right']) run(line);
+  const before = run('tree');
+  assert.doesNotMatch(run('group both b a'), /^error:/);
+  assert.equal(session.document.find('both').parent!.id, 'scene');
+  assert.deepEqual(session.document.find('both').children.map(n => n.id), ['a', 'b']);
+  run('undo'); assert.equal(run('tree'), before);
+});

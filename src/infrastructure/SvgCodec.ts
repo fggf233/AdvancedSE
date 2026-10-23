@@ -35,6 +35,12 @@ export class SvgCodec {
     if (!root || root.localName !== 'svg' || (root.namespaceURI && root.namespaceURI !== this.namespace)) {
       throw new Error('expected an SVG root element');
     }
+    // Reject unsupported root rendering state instead of silently losing it on save.
+    const rootAttributes = new Set(['width', 'height', 'viewBox', 'xmlns', 'version', 'id']);
+    for (let i = 0; i < root.attributes.length; i++) {
+      const name = root.attributes.item(i)!.name;
+      if (!rootAttributes.has(name)) throw new Error(`unsupported SVG root attribute: ${name}`);
+    }
     const width = this.dimension(root.getAttribute('width'), 800);
     const height = this.dimension(root.getAttribute('height'), 600);
     const viewBox = root.getAttribute('viewBox');

@@ -34,6 +34,7 @@ test('malformed/unsupported SVG and duplicate ids are rejected', () => {
     '<svg><path id="p"/></svg>', '<svg><text id="t"><g id="g"/></text></svg>',
     '<!DOCTYPE svg [<!ENTITY x "bad">]><svg/>', '<svg width="NaN"/>',
     '<svg width="10" height="10" viewBox="0 0 100 100"/>',
+    '<svg fill="red"><rect width="1" height="1"/></svg>',
   ];
   for (const source of invalid) assert.throws(() => codec.decode(source), source);
 });

@@ -10,7 +10,8 @@
     "build": "tsc -p tsconfig.json",
     "cli": "npm run build --silent && node dist/src/main.js",
     "test": "npm run build --silent && node --test dist/test/*.test.js",
-    "check": "npm run test"
+    "check": "npm run test",
+    "demo": "npm run build --silent && node scripts/demo.mjs"
   },
   "dependencies": {
     "@xmldom/xmldom": "0.9.12"
