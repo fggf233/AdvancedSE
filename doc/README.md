@@ -1,5 +1,9 @@
 # Lab1 Phase 1：SVG 命令行编辑器
 
+**项目仓库（提交分支 `lab1`）：[https://github.com/fggf233/AdvancedSE/tree/lab1](https://github.com/fggf233/AdvancedSE/tree/lab1)**
+
+本报告对应上述分支，源代码、测试、示例及分阶段提交记录均可在该分支查看。
+
 ## 架构方案
 
 采用 TypeScript、面向对象及一类一文件。目标为作业规定的六种 SVG 元素、全部 CLI 命令和撤销重做；不实现后续阶段的 box 插件。
@@ -68,6 +72,32 @@ infrastructure --> domain
 ### 用户运行反馈修正
 
 - 2026-10-23：用户在自己的 PowerShell 中运行 `scripts/cli.ps1`，遇到系统禁止执行脚本。代理环境的终端测试没有覆盖该执行策略差异。新增 `scripts/run.cmd` 统一支持启动、测试和示例，保持系统执行策略不变，并修正运行说明。本次修正在已有 `final` 标签之后提交到 `lab1`，保留已发布标签指向的原验收版本。
+
+### 追加测试：复杂单图绘制与预览
+
+2026-10-23，在基础流程图样例完成后，我向 AI 提出“来个复杂的测试样例”，随后进一步明确“只需一个，图片复杂点就行”。据此，将追加验证限定为一张较复杂的完整图形，检验编辑器能否通过连续命令组织多个图形和嵌套容器，并正确输出 SVG。
+
+实现的样例为“订单处理平台系统架构图”，画布尺寸为 **1280 × 900**，共 **130 个元素（含容器）**。图中包含接入层、业务处理层、数据与运维三个分区，以及服务卡片、数据库、缓存、消息队列、方向箭头和底部运行概览。指标数值为绘图示例数据。
+
+验证内容包括：
+
+- 使用 `rect`、`circle`、`ellipse`、`line`、`text`、`g` 六种类型构建同一张图。
+- 使用 `create … in …` 建立分区与节点的嵌套关系，验证容器组织能力。
+- 使用 `set` 设置文字颜色和线宽；用多条线段组成箭头，并通过 `front connections` 将连线放到分区背景之上。
+- 连续回放命令并保存文件，检查中文文本、连接关系和图层顺序的实际显示效果。
+
+源命令保存在 [examples/complex.commands](../examples/complex.commands)，生成结果为 [examples/complex.svg](../examples/complex.svg)。在项目根目录的 PowerShell 中可复现：
+
+```powershell
+.\scripts\run.cmd demo examples/complex.commands
+Start-Process .\examples\complex.svg
+```
+
+执行结果：命令回放成功，编辑器输出 `saved to examples/complex.svg (130 elements)`；随后通过 Edge 无界面模式渲染并检查预览，中文、分区、服务节点及连线均正常显示。为支持这一需求，示例回放脚本增加了可选的命令文件参数；相关修改以独立提交 `04ff140` 保存在 `lab1` 分支。
+
+这是对复杂图形构建、文件输出与视觉效果的集成验证，不计入原有 20 项自动化测试，也不替代撤销重做和错误处理的行为测试。
+
+![复杂单图测试结果：订单处理平台系统架构图](../examples/complex.svg)
 
 ## 一致性自查
 
