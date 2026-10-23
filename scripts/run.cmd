@@ -14,7 +14,11 @@ if errorlevel 1 (
     popd
     exit /b 1
 )
-call npm.cmd run "%task%"
+if /i "%task%"=="demo" (
+    call npm.cmd run demo -- "%~2"
+) else (
+    call npm.cmd run "%task%"
+)
 set "result=%errorlevel%"
 popd
 exit /b %result%

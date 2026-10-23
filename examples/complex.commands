@@ -1,0 +1,207 @@
+# Complex drawing example: order processing platform
+init 1280 900
+create rect background 0 0 1280 900 #f1f5f9
+create g header
+create rect header-bg 0 0 1280 100 #10233f in header
+create text title 40 43 "订单处理平台 · 系统架构" in header
+set title fill #ffffff
+create text subtitle 40 74 "接入层 / 业务服务 / 数据存储    ·    SVG CLI 综合绘图样例" in header
+set subtitle fill #b8cce6
+create circle status-dot 1140 38 6 #34d399 in header
+create text status 1156 44 "系统正常" in header
+set status fill #d1fae5
+create g architecture
+create g connections in architecture
+create g access in architecture
+create rect access-panel 40 130 280 570 #ffffff in access
+create rect access-band 40 130 280 55 #dfe8f3 in access
+create text access-number 58 165 "01" in access
+set access-number fill #49709d
+create text access-title 95 165 "接入层" in access
+set access-title fill #172b4d
+create g services in architecture
+create rect services-panel 360 130 560 570 #ffffff in services
+create rect services-band 360 130 560 55 #dfe8f3 in services
+create text services-number 378 165 "02" in services
+set services-number fill #49709d
+create text services-title 415 165 "业务处理层" in services
+set services-title fill #172b4d
+create g data in architecture
+create rect data-panel 960 130 280 570 #ffffff in data
+create rect data-band 960 130 280 55 #dfe8f3 in data
+create text data-number 978 165 "03" in data
+set data-number fill #49709d
+create text data-title 1015 165 "数据与运维" in data
+set data-title fill #172b4d
+create g client in access
+create rect client-shadow 64 224 240 90 #e2e8f0 in client
+create rect client-body 60 220 240 90 #eff6ff in client
+create rect client-stripe 60 220 5 90 #4f6f99 in client
+create text client-title 80 251 "用户端 / Web & App" in client
+set client-title fill #172b4d
+create text client-detail 80 279 "浏览商品 → 提交订单" in client
+set client-detail fill #526780
+create g payment in access
+create rect payment-shadow 64 374 240 90 #e2e8f0 in payment
+create rect payment-body 60 370 240 90 #fff7ed in payment
+create rect payment-stripe 60 370 5 90 #4f6f99 in payment
+create text payment-title 80 401 "支付渠道" in payment
+set payment-title fill #172b4d
+create text payment-detail 80 429 "回调通知 · 签名校验" in payment
+set payment-detail fill #526780
+create g console in access
+create rect console-shadow 64 524 240 90 #e2e8f0 in console
+create rect console-body 60 520 240 90 #f5f3ff in console
+create rect console-stripe 60 520 5 90 #4f6f99 in console
+create text console-title 80 551 "运营管理后台" in console
+set console-title fill #172b4d
+create text console-detail 80 579 "库存管理 · 订单查询" in console
+set console-detail fill #526780
+create g gateway in services
+create rect gateway-shadow 404 224 480 70 #e2e8f0 in gateway
+create rect gateway-body 400 220 480 70 #e0f2fe in gateway
+create rect gateway-stripe 400 220 5 70 #4f6f99 in gateway
+create text gateway-title 420 251 "API 网关" in gateway
+set gateway-title fill #172b4d
+create text gateway-detail 420 279 "路由 / 鉴权 / 限流 / 请求追踪" in gateway
+set gateway-detail fill #526780
+create g order in services
+create rect order-shadow 404 359 220 95 #e2e8f0 in order
+create rect order-body 400 355 220 95 #dbeafe in order
+create rect order-stripe 400 355 5 95 #4f6f99 in order
+create text order-title 420 386 "订单服务" in order
+set order-title fill #172b4d
+create text order-detail 420 414 "创建 · 状态流转" in order
+set order-detail fill #526780
+create g inventory in services
+create rect inventory-shadow 664 359 220 95 #e2e8f0 in inventory
+create rect inventory-body 660 355 220 95 #dcfce7 in inventory
+create rect inventory-stripe 660 355 5 95 #4f6f99 in inventory
+create text inventory-title 680 386 "库存服务" in inventory
+set inventory-title fill #172b4d
+create text inventory-detail 680 414 "预占 · 扣减 · 释放" in inventory
+set inventory-detail fill #526780
+create g queue in services
+create rect queue-shadow 404 524 480 80 #e2e8f0 in queue
+create rect queue-body 400 520 480 80 #fef3c7 in queue
+create rect queue-stripe 400 520 5 80 #4f6f99 in queue
+create text queue-title 420 551 "异步消息队列" in queue
+set queue-title fill #172b4d
+create text queue-detail 420 579 "订单事件 → 支付结果 → 库存同步" in queue
+set queue-detail fill #526780
+create text service-note 400 652 "同步请求与异步事件分离，服务通过消息协作" in services
+set service-note fill #64748b
+create g database in data
+create ellipse database-body 1100 260 105 45 #dbeafe in database
+create text database-title 1045 255 "订单数据库" in database
+set database-title fill #172b4d
+create text database-detail 1040 277 "持久化 / 主从复制" in database
+set database-detail fill #526780
+create g cache in data
+create ellipse cache-body 1100 415 105 45 #dcfce7 in cache
+create text cache-title 1062 410 "缓存集群" in cache
+set cache-title fill #172b4d
+create text cache-detail 1045 432 "热点数据 / TTL" in cache
+set cache-detail fill #526780
+create g monitor in data
+create rect monitor-shadow 999 544 210 70 #e2e8f0 in monitor
+create rect monitor-body 995 540 210 70 #f5f3ff in monitor
+create rect monitor-stripe 995 540 5 70 #4f6f99 in monitor
+create text monitor-title 1015 571 "监控与告警" in monitor
+set monitor-title fill #172b4d
+create text monitor-detail 1015 599 "指标 / 日志 / 链路" in monitor
+set monitor-detail fill #526780
+create line request 300 260 400 260 #64748b in connections
+set request stroke-width 2
+create line request-a 400 260 391.22 255.21 #64748b in connections
+set request-a stroke-width 2
+create line request-b 400 260 391.22 264.79 #64748b in connections
+set request-b stroke-width 2
+create line pay-notify 300 415 400 403 #64748b in connections
+set pay-notify stroke-width 2
+create line pay-notify-a 400 403 390.72 399.29 #64748b in connections
+set pay-notify-a stroke-width 2
+create line pay-notify-b 400 403 391.86 408.81 #64748b in connections
+set pay-notify-b stroke-width 2
+create line admin 300 565 400 560 #64748b in connections
+set admin stroke-width 2
+create line admin-a 400 560 391 555.65 #64748b in connections
+set admin-a stroke-width 2
+create line admin-b 400 560 391.47 565.23 #64748b in connections
+set admin-b stroke-width 2
+create line route-order 510 290 510 355 #64748b in connections
+set route-order stroke-width 2
+create line route-order-a 510 355 514.79 346.22 #64748b in connections
+set route-order-a stroke-width 2
+create line route-order-b 510 355 505.21 346.22 #64748b in connections
+set route-order-b stroke-width 2
+create line route-stock 770 290 770 355 #64748b in connections
+set route-stock stroke-width 2
+create line route-stock-a 770 355 774.79 346.22 #64748b in connections
+set route-stock-a stroke-width 2
+create line route-stock-b 770 355 765.21 346.22 #64748b in connections
+set route-stock-b stroke-width 2
+create line reserve 620 403 660 403 #64748b in connections
+set reserve stroke-width 2
+create line reserve-a 660 403 651.22 398.21 #64748b in connections
+set reserve-a stroke-width 2
+create line reserve-b 660 403 651.22 407.79 #64748b in connections
+set reserve-b stroke-width 2
+create line order-event 510 450 510 520 #64748b in connections
+set order-event stroke-width 2
+create line order-event-a 510 520 514.79 511.22 #64748b in connections
+set order-event-a stroke-width 2
+create line order-event-b 510 520 505.21 511.22 #64748b in connections
+set order-event-b stroke-width 2
+create line stock-event 770 450 770 520 #64748b in connections
+set stock-event stroke-width 2
+create line stock-event-a 770 520 774.79 511.22 #64748b in connections
+set stock-event-a stroke-width 2
+create line stock-event-b 770 520 765.21 511.22 #64748b in connections
+set stock-event-b stroke-width 2
+create line database-link 880 260 995 260 #64748b in connections
+set database-link stroke-width 2
+create line database-link-a 995 260 986.22 255.21 #64748b in connections
+set database-link-a stroke-width 2
+create line database-link-b 995 260 986.22 264.79 #64748b in connections
+set database-link-b stroke-width 2
+create line cache-link 880 403 995 415 #64748b in connections
+set cache-link stroke-width 2
+create line cache-link-a 995 415 986.77 409.32 #64748b in connections
+set cache-link-a stroke-width 2
+create line cache-link-b 995 415 985.77 418.86 #64748b in connections
+set cache-link-b stroke-width 2
+create line observe 880 560 995 575 #64748b in connections
+set observe stroke-width 2
+create line observe-a 995 575 986.92 569.11 #64748b in connections
+set observe-a stroke-width 2
+create line observe-b 995 575 985.68 578.62 #64748b in connections
+set observe-b stroke-width 2
+front connections
+create g footer
+create rect footer-bg 40 735 1200 125 #10233f in footer
+create text legend-title 65 768 "运行概览" in footer
+set legend-title fill #ffffff
+create circle requests-dot 80 803 8 #38bdf8 in footer
+create text requests-name 100 798 "请求吞吐" in footer
+set requests-name fill #b8cce6
+create text requests-value 100 824 "1,280 req/s" in footer
+set requests-value fill #ffffff
+create circle latency-dot 390 803 8 #34d399 in footer
+create text latency-name 410 798 "平均延迟" in footer
+set latency-name fill #b8cce6
+create text latency-value 410 824 "24 ms" in footer
+set latency-value fill #ffffff
+create circle events-dot 700 803 8 #fbbf24 in footer
+create text events-name 720 798 "事件积压" in footer
+set events-name fill #b8cce6
+create text events-value 720 824 "12 messages" in footer
+set events-value fill #ffffff
+create circle uptime-dot 1010 803 8 #a78bfa in footer
+create text uptime-name 1030 798 "服务可用性" in footer
+set uptime-name fill #b8cce6
+create text uptime-value 1030 824 "99.95%" in footer
+set uptime-value fill #ffffff
+create text footnote 40 884 "示例数据仅用于绘图展示。所有元素均由 CLI 的 rect / circle / ellipse / line / text / g 创建。"
+set footnote fill #64748b
+save examples/complex.svg

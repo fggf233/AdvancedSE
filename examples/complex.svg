@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280" height="900" viewBox="0 0 1280 900" xmlns="http://www.w3.org/2000/svg">
+  <rect id="background" x="0" y="0" width="1280" height="900" fill="#f1f5f9"/>
+  <g id="header">
+    <rect id="header-bg" x="0" y="0" width="1280" height="100" fill="#10233f"/>
+    <text id="title" x="40" y="43" fill="#ffffff">订单处理平台 · 系统架构</text>
+    <text id="subtitle" x="40" y="74" fill="#b8cce6">接入层 / 业务服务 / 数据存储    ·    SVG CLI 综合绘图样例</text>
+    <circle id="status-dot" cx="1140" cy="38" r="6" fill="#34d399"/>
+    <text id="status" x="1156" y="44" fill="#d1fae5">系统正常</text>
+  </g>
+  <g id="architecture">
+    <g id="access">
+      <rect id="access-panel" x="40" y="130" width="280" height="570" fill="#ffffff"/>
+      <rect id="access-band" x="40" y="130" width="280" height="55" fill="#dfe8f3"/>
+      <text id="access-number" x="58" y="165" fill="#49709d">01</text>
+      <text id="access-title" x="95" y="165" fill="#172b4d">接入层</text>
+      <g id="client">
+        <rect id="client-shadow" x="64" y="224" width="240" height="90" fill="#e2e8f0"/>
+        <rect id="client-body" x="60" y="220" width="240" height="90" fill="#eff6ff"/>
+        <rect id="client-stripe" x="60" y="220" width="5" height="90" fill="#4f6f99"/>
+        <text id="client-title" x="80" y="251" fill="#172b4d">用户端 / Web &amp; App</text>
+        <text id="client-detail" x="80" y="279" fill="#526780">浏览商品 → 提交订单</text>
+      </g>
+      <g id="payment">
+        <rect id="payment-shadow" x="64" y="374" width="240" height="90" fill="#e2e8f0"/>
+        <rect id="payment-body" x="60" y="370" width="240" height="90" fill="#fff7ed"/>
+        <rect id="payment-stripe" x="60" y="370" width="5" height="90" fill="#4f6f99"/>
+        <text id="payment-title" x="80" y="401" fill="#172b4d">支付渠道</text>
+        <text id="payment-detail" x="80" y="429" fill="#526780">回调通知 · 签名校验</text>
+      </g>
+      <g id="console">
+        <rect id="console-shadow" x="64" y="524" width="240" height="90" fill="#e2e8f0"/>
+        <rect id="console-body" x="60" y="520" width="240" height="90" fill="#f5f3ff"/>
+        <rect id="console-stripe" x="60" y="520" width="5" height="90" fill="#4f6f99"/>
+        <text id="console-title" x="80" y="551" fill="#172b4d">运营管理后台</text>
+        <text id="console-detail" x="80" y="579" fill="#526780">库存管理 · 订单查询</text>
+      </g>
+    </g>
+    <g id="services">
+      <rect id="services-panel" x="360" y="130" width="560" height="570" fill="#ffffff"/>
+      <rect id="services-band" x="360" y="130" width="560" height="55" fill="#dfe8f3"/>
+      <text id="services-number" x="378" y="165" fill="#49709d">02</text>
+      <text id="services-title" x="415" y="165" fill="#172b4d">业务处理层</text>
+      <g id="gateway">
+        <rect id="gateway-shadow" x="404" y="224" width="480" height="70" fill="#e2e8f0"/>
+        <rect id="gateway-body" x="400" y="220" width="480" height="70" fill="#e0f2fe"/>
+        <rect id="gateway-stripe" x="400" y="220" width="5" height="70" fill="#4f6f99"/>
+        <text id="gateway-title" x="420" y="251" fill="#172b4d">API 网关</text>
+        <text id="gateway-detail" x="420" y="279" fill="#526780">路由 / 鉴权 / 限流 / 请求追踪</text>
+      </g>
+      <g id="order">
+        <rect id="order-shadow" x="404" y="359" width="220" height="95" fill="#e2e8f0"/>
+        <rect id="order-body" x="400" y="355" width="220" height="95" fill="#dbeafe"/>
+        <rect id="order-stripe" x="400" y="355" width="5" height="95" fill="#4f6f99"/>
+        <text id="order-title" x="420" y="386" fill="#172b4d">订单服务</text>
+        <text id="order-detail" x="420" y="414" fill="#526780">创建 · 状态流转</text>
+      </g>
+      <g id="inventory">
+        <rect id="inventory-shadow" x="664" y="359" width="220" height="95" fill="#e2e8f0"/>
+        <rect id="inventory-body" x="660" y="355" width="220" height="95" fill="#dcfce7"/>
+        <rect id="inventory-stripe" x="660" y="355" width="5" height="95" fill="#4f6f99"/>
+        <text id="inventory-title" x="680" y="386" fill="#172b4d">库存服务</text>
+        <text id="inventory-detail" x="680" y="414" fill="#526780">预占 · 扣减 · 释放</text>
+      </g>
+      <g id="queue">
+        <rect id="queue-shadow" x="404" y="524" width="480" height="80" fill="#e2e8f0"/>
+        <rect id="queue-body" x="400" y="520" width="480" height="80" fill="#fef3c7"/>
+        <rect id="queue-stripe" x="400" y="520" width="5" height="80" fill="#4f6f99"/>
+        <text id="queue-title" x="420" y="551" fill="#172b4d">异步消息队列</text>
+        <text id="queue-detail" x="420" y="579" fill="#526780">订单事件 → 支付结果 → 库存同步</text>
+      </g>
+      <text id="service-note" x="400" y="652" fill="#64748b">同步请求与异步事件分离，服务通过消息协作</text>
+    </g>
+    <g id="data">
+      <rect id="data-panel" x="960" y="130" width="280" height="570" fill="#ffffff"/>
+      <rect id="data-band" x="960" y="130" width="280" height="55" fill="#dfe8f3"/>
+      <text id="data-number" x="978" y="165" fill="#49709d">03</text>
+      <text id="data-title" x="1015" y="165" fill="#172b4d">数据与运维</text>
+      <g id="database">
+        <ellipse id="database-body" cx="1100" cy="260" rx="105" ry="45" fill="#dbeafe"/>
+        <text id="database-title" x="1045" y="255" fill="#172b4d">订单数据库</text>
+        <text id="database-detail" x="1040" y="277" fill="#526780">持久化 / 主从复制</text>
+      </g>
+      <g id="cache">
+        <ellipse id="cache-body" cx="1100" cy="415" rx="105" ry="45" fill="#dcfce7"/>
+        <text id="cache-title" x="1062" y="410" fill="#172b4d">缓存集群</text>
+        <text id="cache-detail" x="1045" y="432" fill="#526780">热点数据 / TTL</text>
+      </g>
+      <g id="monitor">
+        <rect id="monitor-shadow" x="999" y="544" width="210" height="70" fill="#e2e8f0"/>
+        <rect id="monitor-body" x="995" y="540" width="210" height="70" fill="#f5f3ff"/>
+        <rect id="monitor-stripe" x="995" y="540" width="5" height="70" fill="#4f6f99"/>
+        <text id="monitor-title" x="1015" y="571" fill="#172b4d">监控与告警</text>
+        <text id="monitor-detail" x="1015" y="599" fill="#526780">指标 / 日志 / 链路</text>
+      </g>
+    </g>
+    <g id="connections">
+      <line id="request" x1="300" x2="400" y1="260" y2="260" stroke="#64748b" stroke-width="2"/>
+      <line id="request-a" x1="400" x2="391.22" y1="260" y2="255.21" stroke="#64748b" stroke-width="2"/>
+      <line id="request-b" x1="400" x2="391.22" y1="260" y2="264.79" stroke="#64748b" stroke-width="2"/>
+      <line id="pay-notify" x1="300" x2="400" y1="415" y2="403" stroke="#64748b" stroke-width="2"/>
+      <line id="pay-notify-a" x1="400" x2="390.72" y1="403" y2="399.29" stroke="#64748b" stroke-width="2"/>
+      <line id="pay-notify-b" x1="400" x2="391.86" y1="403" y2="408.81" stroke="#64748b" stroke-width="2"/>
+      <line id="admin" x1="300" x2="400" y1="565" y2="560" stroke="#64748b" stroke-width="2"/>
+      <line id="admin-a" x1="400" x2="391" y1="560" y2="555.65" stroke="#64748b" stroke-width="2"/>
+      <line id="admin-b" x1="400" x2="391.47" y1="560" y2="565.23" stroke="#64748b" stroke-width="2"/>
+      <line id="route-order" x1="510" x2="510" y1="290" y2="355" stroke="#64748b" stroke-width="2"/>
+      <line id="route-order-a" x1="510" x2="514.79" y1="355" y2="346.22" stroke="#64748b" stroke-width="2"/>
+      <line id="route-order-b" x1="510" x2="505.21" y1="355" y2="346.22" stroke="#64748b" stroke-width="2"/>
+      <line id="route-stock" x1="770" x2="770" y1="290" y2="355" stroke="#64748b" stroke-width="2"/>
+      <line id="route-stock-a" x1="770" x2="774.79" y1="355" y2="346.22" stroke="#64748b" stroke-width="2"/>
+      <line id="route-stock-b" x1="770" x2="765.21" y1="355" y2="346.22" stroke="#64748b" stroke-width="2"/>
+      <line id="reserve" x1="620" x2="660" y1="403" y2="403" stroke="#64748b" stroke-width="2"/>
+      <line id="reserve-a" x1="660" x2="651.22" y1="403" y2="398.21" stroke="#64748b" stroke-width="2"/>
+      <line id="reserve-b" x1="660" x2="651.22" y1="403" y2="407.79" stroke="#64748b" stroke-width="2"/>
+      <line id="order-event" x1="510" x2="510" y1="450" y2="520" stroke="#64748b" stroke-width="2"/>
+      <line id="order-event-a" x1="510" x2="514.79" y1="520" y2="511.22" stroke="#64748b" stroke-width="2"/>
+      <line id="order-event-b" x1="510" x2="505.21" y1="520" y2="511.22" stroke="#64748b" stroke-width="2"/>
+      <line id="stock-event" x1="770" x2="770" y1="450" y2="520" stroke="#64748b" stroke-width="2"/>
+      <line id="stock-event-a" x1="770" x2="774.79" y1="520" y2="511.22" stroke="#64748b" stroke-width="2"/>
+      <line id="stock-event-b" x1="770" x2="765.21" y1="520" y2="511.22" stroke="#64748b" stroke-width="2"/>
+      <line id="database-link" x1="880" x2="995" y1="260" y2="260" stroke="#64748b" stroke-width="2"/>
+      <line id="database-link-a" x1="995" x2="986.22" y1="260" y2="255.21" stroke="#64748b" stroke-width="2"/>
+      <line id="database-link-b" x1="995" x2="986.22" y1="260" y2="264.79" stroke="#64748b" stroke-width="2"/>
+      <line id="cache-link" x1="880" x2="995" y1="403" y2="415" stroke="#64748b" stroke-width="2"/>
+      <line id="cache-link-a" x1="995" x2="986.77" y1="415" y2="409.32" stroke="#64748b" stroke-width="2"/>
+      <line id="cache-link-b" x1="995" x2="985.77" y1="415" y2="418.86" stroke="#64748b" stroke-width="2"/>
+      <line id="observe" x1="880" x2="995" y1="560" y2="575" stroke="#64748b" stroke-width="2"/>
+      <line id="observe-a" x1="995" x2="986.92" y1="575" y2="569.11" stroke="#64748b" stroke-width="2"/>
+      <line id="observe-b" x1="995" x2="985.68" y1="575" y2="578.62" stroke="#64748b" stroke-width="2"/>
+    </g>
+  </g>
+  <g id="footer">
+    <rect id="footer-bg" x="40" y="735" width="1200" height="125" fill="#10233f"/>
+    <text id="legend-title" x="65" y="768" fill="#ffffff">运行概览</text>
+    <circle id="requests-dot" cx="80" cy="803" r="8" fill="#38bdf8"/>
+    <text id="requests-name" x="100" y="798" fill="#b8cce6">请求吞吐</text>
+    <text id="requests-value" x="100" y="824" fill="#ffffff">1,280 req/s</text>
+    <circle id="latency-dot" cx="390" cy="803" r="8" fill="#34d399"/>
+    <text id="latency-name" x="410" y="798" fill="#b8cce6">平均延迟</text>
+    <text id="latency-value" x="410" y="824" fill="#ffffff">24 ms</text>
+    <circle id="events-dot" cx="700" cy="803" r="8" fill="#fbbf24"/>
+    <text id="events-name" x="720" y="798" fill="#b8cce6">事件积压</text>
+    <text id="events-value" x="720" y="824" fill="#ffffff">12 messages</text>
+    <circle id="uptime-dot" cx="1010" cy="803" r="8" fill="#a78bfa"/>
+    <text id="uptime-name" x="1030" y="798" fill="#b8cce6">服务可用性</text>
+    <text id="uptime-value" x="1030" y="824" fill="#ffffff">99.95%</text>
+  </g>
+  <text id="footnote" x="40" y="884" fill="#64748b">示例数据仅用于绘图展示。所有元素均由 CLI 的 rect / circle / ellipse / line / text / g 创建。</text>
+</svg>

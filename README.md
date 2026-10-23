@@ -46,6 +46,15 @@ Windows 也可使用无需手动设置 PATH 的入口：
 .\scripts\run.cmd demo
 ```
 
+更复杂的单图样例（订单处理平台，130 个元素）：
+
+```powershell
+.\scripts\run.cmd demo examples/complex.commands
+Start-Process .\examples\complex.svg
+```
+
+该图包含三大分区、嵌套服务卡片、数据库/缓存、箭头和运行概览。源命令见 [complex.commands](examples/complex.commands)。所有图形由本编辑器命令生成。
+
 `npm run demo` 以 UTF-8 回放 [示例命令](examples/flowchart.commands)，生成 [flowchart.svg](examples/flowchart.svg)。可直接用浏览器打开。
 
 ![示例流程图](examples/flowchart.svg)
