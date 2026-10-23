@@ -3,11 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "cli": "npm run build --silent && node dist/src/main.js",
     "test": "npm run build --silent && node --test dist/test/*.test.js",
     "check": "npm run test"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "0.9.12"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "7.0.2"
   }
 }
