@@ -1,0 +1,21 @@
+@startuml
+skinparam componentStyle rectangle
+skinparam backgroundColor white
+title SVG CLI - Phase 1 module dependencies
+package "cli" as cli
+package "commands" as commands
+package "application" as application
+package "domain" as domain
+package "infrastructure" as infrastructure
+cli --> commands
+cli --> application
+commands --> application
+commands --> domain
+application --> domain
+infrastructure --> application : implements DocumentStore
+infrastructure --> domain
+note bottom of domain
+Shape / GeometryShape / Group / SvgDocument
+No dependency on CLI, filesystem or XML library
+end note
+@enduml

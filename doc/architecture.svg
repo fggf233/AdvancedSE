@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="540" viewBox="0 0 1020 540">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0 L9 4 L0 8" fill="none" stroke="#334155"/></marker></defs>
+  <rect width="1020" height="540" fill="#fff"/>
+  <g font-family="Arial, sans-serif" fill="#0f172a">
+    <text x="40" y="40" font-size="24" font-weight="bold">SVG CLI · Module dependencies</text>
+    <text x="40" y="66" font-size="14" fill="#64748b">Package diagram — matching architecture.puml; arrows point to dependencies</text>
+    <g fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M220 240 L280 160"/><path d="M220 265 L540 265"/>
+      <path d="M460 155 L540 230"/><path d="M460 135 H870 V220"/>
+      <path d="M720 265 H780"/><path d="M460 395 L540 300"/>
+      <path d="M460 420 H870 V310"/>
+    </g>
+    <g stroke="#475569" stroke-width="1.5" fill="#eff6ff">
+      <path d="M40 220 V204 H112 V220 H220 V310 H40 Z"/>
+      <path d="M280 110 V94 H352 V110 H460 V200 H280 Z"/>
+      <path d="M540 220 V204 H612 V220 H720 V310 H540 Z"/>
+      <path d="M780 220 V204 H852 V220 H960 V310 H780 Z"/>
+      <path d="M280 360 V344 H352 V360 H460 V450 H280 Z"/>
+    </g>
+    <g font-size="18" font-weight="bold" text-anchor="middle">
+      <text x="130" y="252">cli</text><text x="370" y="142">commands</text>
+      <text x="630" y="252">application</text><text x="870" y="252">domain</text>
+      <text x="370" y="392">infrastructure</text>
+    </g>
+    <g font-size="13" text-anchor="middle" fill="#475569">
+      <text x="130" y="281">Tokenizer / REPL</text><text x="370" y="172">Command objects</text>
+      <text x="630" y="281">Session / History / Ports</text><text x="870" y="281">Shapes / Composite tree</text>
+      <text x="370" y="422">SVG codec / File store</text>
+    </g>
+    <text x="500" y="374" font-size="12" fill="#475569">implements DocumentStore</text>
+    <text x="40" y="505" font-size="14" fill="#475569">main.ts composes the modules. Domain code has no filesystem, terminal or XML-library dependencies.</text>
+  </g>
+</svg>
